@@ -86,8 +86,8 @@ import { UsersComponent } from './users/users.component';
 
 export function apiConfigFactory (): Configuration {
   const params: ConfigurationParameters = {
-    apiKeys: {'X-API-KEY': 'C4m0v47i0n'},
-    basePath:  "http://apiserver.camovation-dns.de:4002",
+    apiKeys: {'X-API-KEY': '***********'},
+    basePath:  "http://**********************",
     // set configuration parameters here.
   }
   return new Configuration(params);
