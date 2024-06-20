@@ -1,0 +1,28 @@
+:host ::ng-deep .block-ui-wrapper {
+    background: rgba(255, 249, 249, 0.5) !important;
+  }
+  
+  :host ::ng-deep .close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
+    outline: none !important;
+  }
+  
+  ::ng-deep ngb-modal-backdrop {
+    z-index: 1050 !important;
+  }
+  
+  hr {
+    height: 2px; /* Höhe der Linie */
+    background-color: #333; /* Farbe der Linie */
+    border: none; /* Entfernt den Standard-Rahmen */
+    margin-top: 0;
+}
+.custom-form {
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.custom-input,
+.custom-label {
+  font-size: large;
+}
+  

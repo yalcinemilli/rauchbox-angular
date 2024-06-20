@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4 class="modal-title">Lieferant {{ title }}</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label class="control-label" for="inputLieferantenname">Lieferantenname<span
+                    class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="inputLieferantenname" name="lieferantenname"
+                placeholder="Lieferantenname" formControlName="lieferantenname">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputKundennummer">Kundennummer</label>
+            <input type="text" class="form-control" id="inputKundennummer" name="kundennummer"
+                placeholder="Kundennummer" formControlName="kundennummer">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputSupporttelefon">Supporttelefon</label>
+            <input type="text" class="form-control" id="inputSupporttelefon" name="supporttelefon" placeholder="Supporttelefon"
+                formControlName="supporttelefon">
+        </div>
+            <div class="form-group">
+                <label class="control-label" for="inputAnsprechpartner">Ansprechpartner<span
+                        class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputAnsprechpartner" name="ansprechpartner"
+                    placeholder="Ansprechpartner" formControlName="ansprechpartner">
+            </div>
+
+      </form>
+  </div>
+  <div class="modal-footer">
+  <button type="submit" class="btn btn-success round" (click)="onSubmit()">Hinzufügen</button>
+  <button type="reset" class="btn round bg-red" style="color: white;" (click)="activeModal.close('Schließen')">Schließen</button>
+  </div>

@@ -1,0 +1,61 @@
+table {
+    width: 100%;
+    table-layout: auto; /* Automatische Anpassung der Spaltenbreite */
+    border-collapse: collapse;
+    padding: 0;
+  }
+  th:last-child {
+    width: 1%;
+}
+td:last-child {
+    float: right;
+    width: max-content;
+}
+  .collapse-transition {
+    transition: height 0.3s ease-in-out;
+  }
+  
+  .collapse-show {
+    height: auto !important;
+  }
+
+  .addButton {
+    background-color: rgb(60, 146, 169); 
+    border-color: rgb(60, 146, 169); 
+    color: white; 
+    margin-top: -2.5rem !important; 
+    margin-bottom: 1.5rem !important;
+  }
+
+
+  .editBtn {
+    margin-right: 0.5rem; 
+    color: white;
+  }
+
+  .collap {
+    float: none !important;
+    background-color: hsla(0, 0%, 50%, 0.261);
+  }
+
+  /* Verstecken der Standard-Checkbox */
+.custom-input,
+.custom-label {
+  font-size: large;
+}
+.form-check-input:disabled ~ .form-check-label {
+  color: black;
+}
+.form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
+  cursor: default;
+  opacity: 1;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap; /* Umbruch, falls die Elemente nicht in eine Zeile passen */
+}
+
+.form-check {
+  margin-right: 20px; /* Optionaler Abstand zwischen den Checkboxen */
+}

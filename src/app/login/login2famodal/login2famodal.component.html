@@ -1,0 +1,13 @@
+  <div class="modal-body">
+    <div class="card p-4">
+      <div class="d-flex justify-content-center">
+        <div class="icon-block">
+          <img src="https://img.icons8.com/ios/50/2E9AFE/lock-2.png"/>
+        </div>
+      </div>
+      <div class="text-center">
+        <h2 class="fw-bold">Gib bitte dein 2FA Authentifizierungscode ein!</h2>
+        <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="configOptions"></ng-otp-input>
+      </div>
+    </div>
+  </div>

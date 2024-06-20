@@ -1,0 +1,8 @@
+.clickable-th {
+    cursor: pointer;
+    user-select: none; /* Dies verhindert die Textauswahl */
+}
+
+.table {
+    --bs-table-striped-bg: rgba(0, 0, 0, 0) !important;
+}

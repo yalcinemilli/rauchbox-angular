@@ -1,0 +1,52 @@
+﻿<div class="app-content content">
+  <div class="content-wrapper">
+    <div class="content-header row mb-1">
+    </div>
+    <div class="content-body"><section class="flexbox-container">
+<div class="col-12 d-flex align-items-center justify-content-center">
+    <div class="col-md-4 col-10 box-shadow-2 p-0">
+        <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
+            <div class="card-header border-0">
+                <div class="card-title text-center">
+                    <img src="assets/images/bilder/logoname.png" alt="logo">
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="tryLogin()">
+                        <fieldset class="form-group position-relative has-icon-left">
+                            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                             id="user-name" placeholder="E-Mail" required>
+                            <div class="form-control-position">
+                                <i class="feather ft-user"></i>
+                            </div>
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">E-Mail Adresse Eingeben</div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group position-relative has-icon-left">
+                            <input type="password" placeholder="Passwort" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <div class="form-control-position">
+                                <i class="la la-key"></i>
+                            </div>
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Passwort Eingeben</div>
+                            </div>
+
+                        </fieldset>
+
+                        <button type="submit" class="btn btn-outline-info btn-block">
+                          <i class="fa fa-refresh fa-spin" *ngIf="submitted"></i>
+                          <i class="feather ft-unlock" *ngIf="!submitted"></i> Login
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+    </div>
+  </div>
+</div>

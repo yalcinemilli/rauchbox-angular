@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h4 class="modal-title">Kunde {{ title }}</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="neuerkundeForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label class="control-label" for="inputKundenname">Kundenname<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="inputKundenname" placeholder="Kundenname" name="kundenname" formControlName="kundenname">
+            </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+  <button type="submit" class="btn btn-success round" (click)="onSubmit()">Hinzufügen</button>
+  <button type="reset" class="btn round bg-red" style="color: white;" (click)="activeModal.close('Schließen')">Schließen</button>
+  </div>

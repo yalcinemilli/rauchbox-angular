@@ -1,0 +1,53 @@
+:host ::ng-deep .block-ui-wrapper {
+    background: rgba(255, 249, 249, 0.5) !important;
+  }
+  
+  :host ::ng-deep .close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
+    outline: none !important;
+  }
+  
+  ::ng-deep ngb-modal-backdrop {
+    z-index: 1050 !important;
+  }
+
+  ::ng-deep {
+    .icon-block {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        background-color: #d8eafad2;
+        img {
+            height: auto;
+            margin: auto;
+        }
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 3px 20px -3px #d5dbed;
+    }
+
+    .digit-otp {
+        height: 60px !important;
+        border-radius: 8px !important;
+        color: #2e9afe;
+
+        &::placeholder {
+            color: #2e9afe;
+        }
+
+        &:focus {
+            outline-color: #2e9afe;
+            border-color: #2e9afe;
+        }
+    }
+
+    .ng-touched {
+        border: 2px solid #2e9afe !important;
+    }
+
+}

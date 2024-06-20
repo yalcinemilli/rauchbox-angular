@@ -1,0 +1,76 @@
+<div class="content-wrapper">
+    <div class="content-body">
+      <!-- Basic Tables start -->
+      <div class="row">
+        <div class="col-sm-12" *blockUI="'basicTables'; message: 'Loading'">
+          <div class="card">
+            <div class="table-responsive card-body">
+              <form>
+
+                <div class="form-group form-inline" style="display: block;">
+                  
+                  <label style="float: right;">Suche:
+                  <input class="form-control ml-2" type="text" name="searchTerm"
+                    [(ngModel)]="service.searchTerm" placeholder="Suchen..."/></label>
+                  <span class="ml-3" *ngIf="service.loading$ | async">Daten werden geladen...</span>
+                </div>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col" sortable="kundenname" (sort)="onSort($event)">Kundenname</th>
+                      <th scope="col" sortable="identnummer" (sort)="onSort($event)">Identnummer</th>
+                      <th scope="col" sortable="art" (sort)="onSort($event)">Art</th>
+                      <th scope="col" sortable="leitstelle" (sort)="onSort($event)">Leitstelle</th>
+                      <th scope="col" sortable="Adresse" (sort)="onSort($event)">Adresse</th>
+                      <th scope="col">Aktionen</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let element of objekt; index as i">
+                      <th scope="row">{{ i + 1 }}</th>
+                      <td>
+                        <ngb-highlight [result]="element.kundenname" [term]="service.searchTerm"></ngb-highlight>
+                      </td>
+                      <td>
+                        <ngb-highlight *ngFor="let item of element.objektidents" [result]="item.identnummer + '\n'" [term]="service.searchTerm" style="white-space: pre;"></ngb-highlight>
+                      </td>
+                      <td>
+                        <ngb-highlight *ngFor="let item of element.objektidents" [result]="item.objektart + '\n'" [term]="service.searchTerm" style="white-space: pre;"></ngb-highlight>
+                      </td>
+                      <td>
+                        <ngb-highlight *ngFor="let item of element.objektidents" [result]="item.leitstelle + '\n'" [term]="service.searchTerm" style="white-space: pre;"></ngb-highlight>
+                      </td>
+                      <td>
+                        <ng-template *ngFor="let item of element.objektidents" [ngIf]="item.adresse">
+                          <ngb-highlight [result]="item.adresse.strasse + '\n'" [term]="service.searchTerm" style="white-space: pre;"></ngb-highlight>
+                        </ng-template>
+                      </td>
+                      <td>
+                        <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-float bg-blue" style="color: white;" (click)="openKundenDetails(element)"><i class="la la-edit"></i>Bearbeiten</button>
+                        <button type="button" class="btn btn-float bg-red" style="color: white;" (click)="deleteKundeModal(element)"><i class="la la-trash-o"></i>Löschen</button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="d-flex justify-content-between p-2">
+                  <ngb-pagination [collectionSize]="total$ | async" [(page)]="service.page"
+                    [pageSize]="service.pageSize">
+                  </ngb-pagination>
+
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!------Basic table end--->

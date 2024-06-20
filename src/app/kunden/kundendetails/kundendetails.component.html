@@ -1,0 +1,392 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+
+        <section class="content-header">
+            <h1>
+                Kunden
+            </h1>
+
+            <section>
+                <div class="row">
+                    <div class="col-12">
+                        <m-card>
+                            <ng-container mCardHeaderTitle>
+                                <h3>Kundendaten</h3>
+
+                            </ng-container>
+                            <ng-container mCardBody>
+
+                                <div class="table table-striped table-bordered table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Kundenname</th>
+                                                <th>Aktionen</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{ kunde.kundenname }}</td>
+                                                <td>
+                                                    <button class="btn btn-float bg-blue" style="color: white;" (click)="openModalKundenname()"><i
+                                                            class="fa fa-edit"></i>
+                                                        Bearbeiten</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </ng-container>
+                        </m-card>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="row">
+                    <div class="col-12">
+                        <m-card>
+                            <ng-container mCardHeaderTitle>
+                                <h3>Standorte</h3>
+
+                            </ng-container>
+                            <ng-container mCardBody>
+
+                                <button class="btn addButton" (click)="openModalStandort(null)">Erstellen</button>
+
+                                <div class="table table-striped table-bordered table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Straße</th>
+                                                <th>Postleitzahl</th>
+                                                <th>Ort</th>
+                                                <th>Aktionen</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngIf="kunde.adressen.length == 0">
+                                                <p>Keine Standorte vorhanden</p>
+                                            </tr>
+                                            <tr *ngFor="let element of kunde.adressen">
+                                                <td>{{ element.strasse }}</td>
+                                                <td>{{ element.plz }}</td>
+                                                <td>{{ element.ort }}</td>
+                                                <td>
+                                                    <button class="btn btn-float bg-blue editBtn" (click)="openModalStandort(element)"><i
+                                                            class="fa fa-edit"></i>
+                                                        Bearbeiten</button>
+                                                    <button class="popup-with-form btn btn-float bg-red" (click)="deleteStandort(element)"
+                                                        style="color: white;"><i class="fa fa-trash-o"></i>
+                                                        Löschen</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </ng-container>
+                        </m-card>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="row">
+                    <div class="col-12">
+                        <m-card>
+                            <ng-container mCardHeaderTitle>
+                                <h3>Kontaktdaten</h3>
+
+                            </ng-container>
+                            <ng-container mCardBody>
+
+                                <button class="btn addButton" (click)="openModalKontakt(null)">Erstellen</button>
+
+                                <div class="table table-striped table-bordered table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Ansprechpartner</th>
+                                                <th>Telefon</th>
+                                                <th>E-Mail</th>
+                                                <th>Notizen</th>
+                                                <th>Aktionen</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngIf="kunde.kontakte.length == 0">
+                                                <p>Keine Kontaktdaten vorhanden</p>
+                                            </tr>
+                                            <tr *ngFor="let element of kunde.kontakte">
+                                                <td>{{ element.ansprechpartner }}</td>
+                                                <td>{{ element.telefon }}</td>
+                                                <td>{{ element.email }}</td>
+                                                <td>{{ element.notizen }}</td>
+                                                <td>
+                                                    <button class="btn btn-float bg-blue editBtn" (click)="openModalKontakt(element)"><i
+                                                            class="fa fa-edit"></i>
+                                                        Bearbeiten</button>
+                                                    <button class="popup-with-form btn btn-float bg-red" (click)="deleteKontakt(element)"
+                                                        style="color: white;"><i class="fa fa-trash-o"></i>
+                                                        Löschen</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </ng-container>
+                        </m-card>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-header">
+                <h1>Technische Daten</h1>
+            </section>
+
+            <section>
+                <div class="row">
+                    <div class="col-12">
+                        <m-card>
+                            <ng-container mCardHeaderTitle>
+                                <h3>Wartungsverträge</h3>
+
+                            </ng-container>
+                            <ng-container mCardBody>
+
+                                <button class="btn addButton" (click)="openModalWartung(null)">Erstellen</button>
+
+                                <div class="table table-striped table-bordered table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Wartungsvertrag</th>
+                                                <th>Wartungsintervall</th>
+                                                <th>Aktionen</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngIf="wartungsvertrag.length == 0">
+                                                <p>Keine Wartungsverträge vorhanden</p>
+                                            </tr>
+                                            <tr *ngFor="let element of wartungsvertrag">
+                                                <td>
+                                                    <div class="form-check">
+                                                    <input class="form-check-input custom-input" type="checkbox" id="vertrag" [checked]="element.vertrag" disabled>
+                                                    <label class="form-check-label custom-label" for="vertrag"><p>Wartungsvertrag</p></label>
+                                                </div>
+                                                </td>
+                                                <td>
+                                                    <div class="checkbox-container">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input custom-input" type="checkbox" id="vertrag1" [checked]="element.first_quartal" disabled>
+                                                        <label class="form-check-label custom-label" for="vertrag1"><p>1. Quartal</p></label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                        <input class="form-check-input custom-input" type="checkbox" id="vertrag2" [checked]="element.second_quartal" disabled>
+                                                        <label class="form-check-label custom-label" for="vertrag2"><p>2. Quartal</p></label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                        <input class="form-check-input custom-input" type="checkbox" id="vertrag3" [checked]="element.third_quartal" disabled>
+                                                        <label class="form-check-label custom-label" for="vertrag3"><p>3. Quartal</p></label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                        <input class="form-check-input custom-input" type="checkbox" id="vertrag4" [checked]="element.fourth_quartal" disabled>
+                                                        <label class="form-check-label custom-label" for="vertrag4"><p>4. Quartal</p></label>
+                                                    </div>                                                
+                                                      </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-float bg-blue editBtn" (click)="openModalWartung(element)"><i
+                                                            class="fa fa-edit"></i>
+                                                        Bearbeiten</button>
+                                                    <button class="popup-with-form btn btn-float bg-red" (click)="deleteWartung(element)"
+                                                        style="color: white;"><i class="fa fa-trash-o"></i>
+                                                        Löschen</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </ng-container>
+                        </m-card>
+                    </div>
+                </div>
+            </section>
+
+
+            <section>
+                <div class="row">
+                    <div class="col-12">
+                        <m-card>
+                            <ng-container mCardHeaderTitle>
+                                <h3>Objekte</h3>
+
+                            </ng-container>
+                            <ng-container mCardBody>
+
+                                <button class="btn addButton" (click)="openModalObjekt(null)">Erstellen</button>
+
+                                <div class="table table-striped table-bordered table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Identnummer</th>
+                                                <th>Art</th>
+                                                <th>Leitstelle</th>
+                                                <th>Adresse</th>
+                                                <th>Aktionen</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngIf="kunde.objektidents.length == 0">
+                                                <p>Keine Objekte vorhanden</p>
+                                            </tr>
+                                            <tr *ngFor="let element of kunde.objektidents">
+                                                <td>{{ element.identnummer }}</td>
+                                                <td>{{ element.objektart }}</td>
+                                                <td>{{ element.leitstelle }}</td>
+                                                <td style="white-space: pre;" *ngIf="element.adresse != null; else leertd" >{{ element.adresse.strasse + '\n' +
+                                                    element.adresse.plz + " " + element.adresse.ort }}</td>
+                                                <td>
+                                                    <ng-template #leertd>
+                                                        <td></td>
+                                                    </ng-template>
+                                                    <button class="btn btn-float bg-blue editBtn" (click)="openModalObjekt(element)"><i
+                                                            class="fa fa-edit"></i>
+                                                        Bearbeiten</button>
+                                                    <button class="popup-with-form btn btn-float bg-red" (click)="deleteObjekt(element)"
+                                                        style="color: white;"><i class="fa fa-trash-o"></i>
+                                                        Löschen</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </ng-container>
+                        </m-card>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="row">
+                    <div class="col-12">
+                        <m-card>
+                            <ng-container mCardHeaderTitle>
+                                <h3>Video</h3>
+
+                            </ng-container>
+                            <ng-container mCardBody>
+
+                                <button class="btn addButton" (click)="openModalVideo(null)">Erstellen</button>
+
+                                    <div class="row">
+                                        <div class="table table-striped table-bordered table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Bezeichnung</th>
+                                                        <th>Aktionen</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngIf="this.videos.length == 0">
+                                                        <p>Keine Videodaten vorhanden</p>
+                                                    </tr>
+                                                    <ng-container *ngFor="let element of this.videos">
+                                                    <tr>
+                                                        <td style="width: 100%; padding-left: 1rem;">
+                                                            <button type="button" class="btn btn-icon mr-1" style="background-color: rgb(60, 146, 169); border-color: rgb(60, 146, 169); color: white;" (click)="toggleCollapse(element)">
+                                                            <i class="fa fa-angle-down"></i></button>
+                                                               <a>{{ element[0].bezeichnung }}</a>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-float bg-blue editBtn" (click)="openModalVideo(element[0])"><i
+                                                                    class="fa fa-edit"></i>
+                                                                Bearbeiten</button>
+                                                            <button class="popup-with-form btn btn-float bg-red" (click)="deleteVideo(element)"
+                                                                style="color: white;"><i class="fa fa-trash-o"></i>
+                                                                Löschen</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="4" class="text-center collap" id="basicCollapse1" [(ngbCollapse)]="element[1]"  [@collapse]="isOpen ? 'open' : 'closed'">
+                                                        <app-kundendetails-item style="padding: 0;" [(obj)]="element[0]"></app-kundendetails-item>
+                                                        </td>
+                                                    </tr>
+                                                    </ng-container>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                            </ng-container>
+                        </m-card>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="row">
+                    <div class="col-12">
+                        <m-card>
+                            <ng-container mCardHeaderTitle>
+                                <h3>Ema</h3>
+
+                            </ng-container>
+                            <ng-container mCardBody>
+
+                                <button class="btn addButton" (click)="openModalEma(null)">Erstellen</button>
+
+                                    <div class="row">
+                                        <div class="table table-striped table-bordered table-responsive">
+                                            <table class="table table-auto">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Bezeichnung</th>
+                                                        <th>Aktionen</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngIf="this.emas.length == 0">
+                                                        <p>Keine Emadaten vorhanden</p>
+                                                    </tr>
+                                                    <ng-container *ngFor="let element of this.emas">
+                                                    <tr>
+                                                        <td style="width: 100%; padding-left: 1rem;">
+                                                            <button type="button" class="btn btn-icon mr-1" style="background-color: rgb(60, 146, 169); border-color: rgb(60, 146, 169); color: white;" (click)="toggleCollapse(element)">
+                                                                <i class="fa fa-angle-down"></i></button>
+                                                                <a>{{ element[0].bezeichnung }}</a>
+                                                            
+                                                        </td>
+                                                        <td class="btnSpace">
+                                                            <button class="btn btn-float bg-blue editBtn" (click)="openModalEma(element[0])"><i
+                                                                    class="fa fa-edit"></i>
+                                                                Bearbeiten</button>
+                                                            <button class="popup-with-form btn btn-float bg-red" (click)="deleteEma(element)"
+                                                                style="color: white;"><i class="fa fa-trash-o"></i>
+                                                                Löschen</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="4" class="text-center collap" id="basicCollapse1" [(ngbCollapse)]="element[1]"  [@collapse]="isOpen ? 'open' : 'closed'">
+                                                        <app-kundendetails-item style="padding: 0;" [(obj)]="element[0]"></app-kundendetails-item>
+                                                        </td>
+                                                    </tr>                                                    
+                                                    </ng-container>
+                                                </tbody>
+                                            </table>
+                                        </div>
+    
+                                    </div>
+    
+    
+                                </ng-container>
+                        </m-card>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+    </div>
+
+</div>

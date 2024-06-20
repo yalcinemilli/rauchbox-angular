@@ -1,0 +1,8 @@
+
+  <div class="modal-body" style="text-align: center;">
+    <img [src]="qrcode" alt="QR Code" class="img-fluid">
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-success round" (click)="onSubmit()">Speichern</button>
+  <button type="reset" class="btn round bg-red" style="color: white;" (click)="activeModal.close('Schließen')">Abbrechen</button>
+  </div>

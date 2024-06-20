@@ -1,0 +1,26 @@
+th[sortable].asc:before {
+    content: '\2191';
+    display: block;
+     width: 22px;
+    height: 22px;
+    float: left;
+    margin-left: -22px;
+}
+th[sortable].desc:before {
+    content: '\2193';
+    display: block;
+    width: 22px;
+    height: 22px;
+    float: left;
+    margin-left: -22px;
+}
+
+.clickable-th {
+    cursor: pointer;
+    user-select: none; /* Dies verhindert die Textauswahl */
+  }
+  
+
+.table {
+    --bs-table-striped-bg: rgba(0, 0, 0, 0) !important;
+}

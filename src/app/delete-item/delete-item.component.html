@@ -1,0 +1,10 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ meintext }} Löschen?</h4>
+  </div>
+  <div class="modal-body">
+    <p>Sind Sie sicher, dass Sie das Objekt löschen wollen?</p>
+  </div>
+  <div class="modal-footer">
+  <button type="submit" class="btn btn-success round" (click)="onSubmit()">Ja</button>
+  <button type="reset" class="btn round bg-red" style="color: white;" (click)="activeModal.close('Schließen')">Nein</button>
+  </div>

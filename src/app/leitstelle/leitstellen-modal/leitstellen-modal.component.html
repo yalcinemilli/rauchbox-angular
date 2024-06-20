@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h4 class="modal-title">Leitstelle {{ title }}</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label class="control-label" for="inputLeitstelle">Leitstelle<span
+                    class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="inputLeitstelle" name="leitstelle" placeholder="Leitstelle" formControlName="leitstelle">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputKennwort">Kennwort</label>
+            <input type="text" class="form-control" id="inputKennwort" name="kennwort"
+                placeholder="Kennwort" formControlName="kennwort">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputTelefon">Telefon</label>
+            <input type="tel" class="form-control" id="inputTelefon" name="telefon" placeholder="Telefon" formControlName="telefon">
+        </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+  <button type="submit" class="btn btn-success round" (click)="onSubmit()">Hinzufügen</button>
+  <button type="reset" class="btn round bg-red" style="color: white;" (click)="activeModal.close('Schließen')">Schließen</button>
+  </div>

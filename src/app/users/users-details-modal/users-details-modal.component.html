@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <h4 class="modal-title">User {{ title }}</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label class="control-label" for="inputVorname">Vorname<span
+                    class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="inputVorname" name="Vorname"
+                placeholder="Vorname" formControlName="Vorname">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputNachname">Nachname</label>
+            <input type="text" class="form-control" id="inputNachname" name="Nachname"
+                placeholder="Nachname" formControlName="Nachname">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputEmail">E-Mail</label>
+            <input type="text" class="form-control" id="inputEmail" name="Email" placeholder="E-Mail"
+                formControlName="Email">
+        </div>
+        <div class="form-group" *ngIf="userobj == null">
+            <label class="control-label" for="inputPasswort">Passwort</label>
+            <input type="text" class="form-control" id="inputPasswort" name="Passwort" placeholder="Passwort"
+                formControlName="Passwort">
+        </div>
+        <div class="form-group">
+            <label class="font-medium-2 text-bold-600 mr-1">2FA Deaktiviert</label>
+                
+                <ui-switch class="switchery" switchColor="white" color="rgb(55, 188, 155)" [checked]="check2fa" (change)="onChange($event)"></ui-switch>
+                
+                <label class="font-medium-2 text-bold-600 ml-1">2FA Aktiviert</label>
+        </div>
+        <div class="form-group" *blockUI="'singleSelect'; message: 'Loading'">
+            <ng-container mCardBody>
+            <label class="control-label" for="inputuserlevel">User Level<span class="text-danger">*</span></label>
+            <select class="form-control" id="inputuserlevel" name="userlevel" formControlName="UserLevel">
+                <option>Bitte Auswählen</option>
+                <option *ngFor="let element of userlevel" [value]="element.id">{{ element.levelname }}</option>
+              </select>
+        </ng-container>
+        </div>
+
+
+      </form>
+  </div>
+  <div class="modal-footer">
+  <button type="submit" class="btn btn-success round" (click)="onSubmit()">Hinzufügen</button>
+  <button type="reset" class="btn round bg-red" style="color: white;" (click)="activeModal.close('Schließen')">Schließen</button>
+  </div>

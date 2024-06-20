@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4 class="modal-title">Wartungsvertrag {{ title }}</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+            <p style="font-size: large;">Wartungsvertrag Vorhanden?</p>
+        <div class="form-check form-group custom-form">
+            <input class="form-check-input form-group custom-input" type="checkbox" id="vertrag" formControlName="vertrag">
+            <label class="form-check-label form-group custom-label" for="vertrag"><p>(Wenn Ja bitte Haken Setzen!)</p></label>
+        </div>
+        <hr>
+        <p style="font-size: large;">Quartale</p>
+        <div class="form-check form-group custom-form">
+            <input class="form-check-input form-group custom-input" type="checkbox" id="firstQuartal" formControlName="firstQuartal">
+            <label class="form-check-label form-group custom-label" for="firstQuartal"><p>1. Quartal</p></label>
+        </div>
+        <div class="form-check form-group custom-form">
+            <input class="form-check-input form-group custom-input" type="checkbox" id="secondQuartal" formControlName="secondQuartal">
+            <label class="form-check-label form-group custom-label" for="secondQuartal"><p>2. Quartal</p></label>
+        </div>
+        <div class="form-check form-group custom-form">
+            <input class="form-check-input form-group custom-input" type="checkbox" id="thirdQuartal" formControlName="thirdQuartal">
+            <label class="form-check-label form-group custom-label" for="thirdQuartal"><p>3. Quartal</p></label>
+        </div>
+        <div class="form-check form-group custom-form">
+            <input class="form-check-input form-group custom-input" type="checkbox" id="fourthQuartal" formControlName="fourthQuartal">
+            <label class="form-check-label form-group custom-label" for="fourthQuartal"><p>4. Quartal</p></label>
+        </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+  <button type="submit" class="btn btn-success round" (click)="onSubmit()">Hinzufügen</button>
+  <button type="reset" class="btn round bg-red" style="color: white;" (click)="activeModal.close('Schließen')">Schließen</button>
+  </div>

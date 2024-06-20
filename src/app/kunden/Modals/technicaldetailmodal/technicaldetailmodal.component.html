@@ -1,0 +1,57 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ objTypName + ' ' + title }}</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label class="control-label" for="inputBezeichnung">Bezeichnung<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="inputBezeichnung" name="bezeichnung" placeholder="Bezeichnung" formControlName="bezeichnung">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputExtipadr">Externe IP<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="inputExtipadr" name="extipadr" placeholder="Externe IP" formControlName="extipadr">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputIntipadr">Interne IP<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="inputIntipadr" name="intipadr" placeholder="Interne IP" formControlName="intipadr">
+        </div>
+        <div class="form-group row">
+        <div formArrayName="customfieldslist">
+        <div *ngFor="let element of customFields.controls; let i = index">
+        <div class="row mb-1" [formGroupName]="i">
+            <div class="col-md-5">
+            <label class="control-label" for="inputFieldname">Bezeichnung</label>
+            <input type="text" class="form-control" id="inputFieldname" formControlName="fieldname" #fieldname placeholder="Bezeichnung" name="fieldname" [value]="element.fieldname">
+          </div>
+          <div class="col-md-5">
+            <label class="control-label" for="inputFieldvalue">Wert</label>
+            <input type="text" class="form-control" id="inputFieldvalue" formControlName="fieldvalue" #fieldvalue placeholder="Wert eingeben" name="fieldvalue" [value]="element.fieldvalue">
+          </div>
+            <div class="col-md-2">
+                <label class="control-label" for="inputFieldvalue1"></label>
+                <button type="button" class="btn btn-icon btn-danger mr-1" id="inputFieldvalue1" (click)="removeField(element, i)"><i class="feather ft-x"></i></button>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="form-group row" *ngIf="isVisible">
+                <div class="col-sm-5">
+                <label class="control-label" for="inputFieldname">Bezeichnung</label>
+                <input type="text" class="form-control" id="inputFieldname" formControlName="fieldnamenew" placeholder="Bezeichnung" name="fieldnamenew">
+              </div>
+              <div class="col-sm-5">
+                <label class="control-label" for="inputFieldvalue">Wert</label>
+                <input type="text" class="form-control" id="inputFieldvalue" formControlName="fieldvaluenew" placeholder="Wert eingeben" name="fieldvaluenew">
+              </div>
+                <div class="col-sm-2">
+                    <label class="control-label" for="inputFieldvalue"></label>
+                    <button type="button" class="btn btn-icon btn-success mr-1" id="inputFieldvalue" (click)="addField()"><i class="feather ft-plus"></i></button>
+                </div>
+            </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+  <button type="submit" class="btn btn-success round" (click)="onSubmit()">Hinzufügen</button>
+  <button type="reset" class="btn round bg-red" style="color: white;" (click)="activeModal.close('Schließen')">Schließen</button>
+  </div>

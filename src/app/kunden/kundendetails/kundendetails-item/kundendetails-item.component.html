@@ -1,0 +1,10 @@
+
+<div class="container" >
+
+    <p>{{"Externe IP + Port: " +  obj.extipadr }}</p>
+    <p>{{"Interne IP + Port: " +  obj.intipadr }}</p>
+    <p *ngFor="let element of obj.customfields">
+        {{ element.fieldname + ': ' + element.fieldvalue}}
+    </p>
+
+</div>
